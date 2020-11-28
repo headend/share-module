@@ -3,6 +3,7 @@ package file_and_directory
 
 import (
 	"crypto/md5"
+	"encoding/hex"
 	"io"
 	"os"
 )
@@ -22,8 +23,12 @@ func GetMd5FromFile(path string) (md5string string, err error)  {
 	if err != nil {
 		return "", err
 	}
+	//Get the 16 bytes hash
+	hashInBytes := hash.Sum(nil)[:16]
+	//Convert the bytes to a string
+	returnMD5String := hex.EncodeToString(hashInBytes)
 
-	return string(hash.Sum(nil)), nil
+	return returnMD5String, nil
 }
 
 func GetFileSizeInByte(path string) (fileSize int64, err error) {
