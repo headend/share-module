@@ -1,0 +1,21 @@
+backendstatefull:
+  host: "0.0.0.0"
+  gateway: "localhost"
+  port: 8888
+  WorkingDir: "/opt/centertower/Backend/"
+  IsDebugEnable: true
+  PathFileLog: "/opt/centertower/Backend/backend.log"
+  #PathFileLog: ""
+
+db:
+ host: "10.11.136.3"
+ port: 3306
+ user: "so_project"
+ password: "qgxOO45xtyR!"
+ dbname: "so_project"
+
+mq:
+  host: "10.11.136.4"
+  port: 9092
+  topic: "warmup"
+  
