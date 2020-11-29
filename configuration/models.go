@@ -6,6 +6,15 @@ type Agent struct {
 	Gateway string `yaml:"gateway"`
 }
 
+type AgentMaster struct {
+	Host             string `yaml:"host"`
+	Port             uint16 `yaml:"port"`
+	WorkingDir       string `yaml:"WorkingDir"`
+	IsDebugEnable    bool   `yaml:"IsDebugEnable"`
+	PathFileLog      string `yaml:"PathFileLog"`
+	RetryConnectTime uint16 `yaml:"RetryConnectTime"`
+}
+
 type AgentWorker struct{
 	MaxLifeTime		int `yaml:"maxLifeTime"`
 	MinThread		int `yaml:"minThread"`
@@ -86,13 +95,7 @@ type Conf struct {
 	}
 
 	Agentd struct {
-		Host             string `yaml:"host"`
-		Port             uint16 `yaml:"port"`
-		WorkingDir       string `yaml:"WorkingDir"`
-		IsDebugEnable    bool   `yaml:"IsDebugEnable"`
-		PathFileLog      string `yaml:"PathFileLog"`
-		RetryConnectTime uint16 `yaml:"RetryConnectTime"`
-		PathToCACertFile string `yaml:"PathToCACertFile"`
+		Master			AgentMaster	`yaml:"master"`
 		Worker			AgentWorker `yaml:"worker"`
 	}
 
