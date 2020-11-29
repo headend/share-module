@@ -3,15 +3,17 @@ package socket_event
 // topic declare
 const (
 	// event to receive notice
-	thongbao  = "notice"
+	ThongBao  = "notice"
 	// event to recieve error
-	loi = "error"
+	Loi = "error"
 	// event to receive connection message
-	ketnoi = "connection"
+	KetNoi = "connection"
 	// event to handle disconnect event
-	ngatketnoi = "disconnection"
+	NgatKetNoi = "disconnection"
 	// event recieve file
-	nhanfile = "receivefile"
+	NhanFile = "receivefile"
 	// event recieve log
-	nhanlog = "log"
+	NhanLog = "log"
+	// event recieve update
+	CapNhat = "update"
 )
