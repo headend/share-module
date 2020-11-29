@@ -2,7 +2,7 @@ package configuration
 
 type Agent struct {
 	Host    string `yaml:"host"`
-	Port    string `yaml:"port"`
+	Port    uint16 `yaml:"port"`
 	Gateway string `yaml:"gateway"`
 }
 
@@ -14,13 +14,13 @@ type AgentWorker struct{
 
 type Agentctl struct {
 	Host    string `yaml:"host"`
-	Port    string `yaml:"port"`
+	Port    uint16 `yaml:"port"`
 	Gateway string `yaml:"gateway"`
 }
 
 type Agentexecuter struct {
 	Host    string `yaml:"host"`
-	Port    string `yaml:"port"`
+	Port    uint16 `yaml:"port"`
 	Gateway string `yaml:"gateway"`
 }
 
@@ -35,7 +35,7 @@ type Conf struct {
 		DBName   string `yaml:"dbname"`
 	}
 	Server struct {
-		Port    string `yaml:"port"`
+		Port    uint16 `yaml:"port"`
 		Host    string `yaml:"host"`
 		Gateway string `yaml:"gateway"`
 	}
@@ -56,7 +56,7 @@ type Conf struct {
 
 	Redis struct {
 		Host         string `yaml:"host"`
-		Port         int    `yaml:"port"`
+		Port         uint16    `yaml:"port"`
 		DB           int    `yaml:"db"`
 		Password     string `yaml:"password"`
 		Key          string `yaml:"key"`
@@ -68,7 +68,7 @@ type Conf struct {
 	}
 	MQ struct {
 		Host                     string `yaml:"host"`
-		Port                     int    `yaml:"port"`
+		Port                     uint16    `yaml:"port"`
 		Topic                    string `yaml:"topic"`
 		WarmUpTopic              string `yaml:"warmup_topic"`
 		NraTopic                 string `yaml:"nra_topic"`
@@ -81,7 +81,7 @@ type Conf struct {
 	AgentGateway struct{
 		Host			string `yaml:"host"`
 		Port            uint16 `yaml:"port"`
-		Gateway			uint16 `yaml:"gateway"`
+		Gateway			string `yaml:"gateway"`
 		Storage			string `yaml:"storage"`
 	}
 
