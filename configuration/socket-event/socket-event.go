@@ -4,6 +4,8 @@ package socket_event
 const (
 	// event to receive notice
 	ThongBao  = "notice"
+	// event to receive message
+	TinNhan  = "message"
 	// event to recieve error
 	Loi = "error"
 	// event to receive connection message
@@ -16,4 +18,12 @@ const (
 	NhanLog = "log"
 	// event recieve update
 	CapNhat = "update"
+	// Nhom chung
+	NhomChung = "nhomchung"
+	// Nhom source goc
+	NhomOrigin = "nhomorigin"
+	// Nhom source sau encode
+	NhomSauEncode = "nhomsauencode"
+	// Nhom source ha tang
+	NhomHaTang = "nhomhatang"
 )
