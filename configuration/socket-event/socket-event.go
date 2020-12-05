@@ -32,4 +32,9 @@ const (
 	ThucThiLenh = "execute-request"
 	// Ket qua thuc thi lenh
 	KetQuaThucThiLenh = "execute-response"
+	// Dieu khien stop/ start
+	DieuKhien = "control"
 )
+
+
+
