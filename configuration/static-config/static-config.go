@@ -20,3 +20,28 @@ const (
 	VersionFilePath = "/opt/iptv/version"
 )
 
+// signal declare
+const (
+	// start agent
+	StartAgentd = 10000
+	// stop agent
+	StopAgentd = 10001
+	// Connect agent
+	ConnectAgentd = 10030
+	// Disconnect agent
+	DisconnectAgentd = 10031
+	// Start Worker
+	StartWorker = 20000
+	// Stop worker
+	StopWorker = 20001
+	//Update Worker
+	UpdateWorker = 20010
+)
+
+// Monitor type declare
+const (
+	Signal = 70001
+	Video = 70002
+	Audio = 70003
+	BlackScreen = 70004
+)
