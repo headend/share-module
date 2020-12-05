@@ -17,7 +17,9 @@ const (
 	// event recieve log
 	NhanLog = "log"
 	// event recieve update
-	CapNhat = "update"
+	CapNhat = "update-request"
+	// event update response
+	KetQuaCapNhat = "update-response"
 	// Nhom chung
 	NhomChung = "nhomchung"
 	// Nhom source goc
@@ -26,4 +28,8 @@ const (
 	NhomSauEncode = "nhomsauencode"
 	// Nhom source ha tang
 	NhomHaTang = "nhomhatang"
+	// Thuc thi lenh
+	ThucThiLenh = "execute-request"
+	// Ket qua thuc thi lenh
+	KetQuaThucThiLenh = "execute-response"
 )
