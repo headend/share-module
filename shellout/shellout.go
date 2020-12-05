@@ -5,12 +5,13 @@ import (
 	"os/exec"
 )
 
-func ExecuteCommand(shell string, command string) (error, string, string) {
+func ExecuteCommand(shell string, command string) (error, int, string, string) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
 	cmd := exec.Command(shell, "-c", command)
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 	err := cmd.Run()
-	return err, stdout.String(), stderr.String()
+	exitCode := cmd.ProcessState.ExitCode()
+	return err, exitCode, stdout.String(), stderr.String()
 }
