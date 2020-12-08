@@ -8,10 +8,13 @@ import (
 	"time"
 )
 
-func ExecuteCommand(shell string, commandToRun string) (error, int, string, string) {
+func ExecuteCommand(shellPath string, commandToRun string) (error, int, string, string) {
+	if shellPath == "" {
+		shellPath = "/bin/sh"
+	}
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
-	cmd := exec.Command(shell, "-c", commandToRun)
+	cmd := exec.Command(shellPath, "-c", commandToRun)
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 	err := cmd.Run()
@@ -19,18 +22,28 @@ func ExecuteCommand(shell string, commandToRun string) (error, int, string, stri
 	return err, exitCode, stdout.String(), stderr.String()
 }
 
-func RunExternalCmd(shell string, commandToRun string, defaultTimeOutSeconds time.Duration) (error, int, string, string) {
-	ctx, cancel := context.WithTimeout(context.Background(), defaultTimeOutSeconds*time.Second)
-	defer cancel()
+func RunExternalCmd(appToRun string, commandToRun string, defaultTimeOutSeconds time.Duration) (error, int, string, string) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
-	cmd := exec.CommandContext(ctx, shell, commandToRun)
-	cmd.Stdout = &stdout
-	cmd.Stderr = &stderr
-	err := cmd.Run()
-	exitCode := cmd.ProcessState.ExitCode()
-	if ctx.Err() == context.DeadlineExceeded {
-		err = fmt.Errorf("Command timed out: ", err)
+	var exitCode int
+	var err error
+	if defaultTimeOutSeconds > 0 {
+		ctx, cancel := context.WithTimeout(context.Background(), defaultTimeOutSeconds*time.Second)
+		defer cancel()
+		cmd := exec.CommandContext(ctx, appToRun, commandToRun)
+		cmd.Stdout = &stdout
+		cmd.Stderr = &stderr
+		err = cmd.Run()
+		exitCode = cmd.ProcessState.ExitCode()
+		if ctx.Err() == context.DeadlineExceeded {
+			err = fmt.Errorf("Command timed out: ", err.Error())
+		}
+	} else {
+		cmd := exec.Command(appToRun, commandToRun)
+		cmd.Stdout = &stdout
+		cmd.Stderr = &stderr
+		err = cmd.Run()
+		exitCode = cmd.ProcessState.ExitCode()
 	}
 	return err, exitCode, stdout.String(), stderr.String()
 }

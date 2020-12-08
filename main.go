@@ -7,7 +7,7 @@ import (
 )
 
 func main()  {
-	err, exitCode, stdOut, stdErr := shellout.RunExternalCmd("sleep", "6", 5)
+	err, exitCode, stdOut, stdErr := shellout.RunExternalCmd("sleep", "6", 0)
 	if err != nil {
 		fmt.Printf("Exit code: %d\n", exitCode)
 		log.Fatal(err)
