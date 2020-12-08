@@ -7,8 +7,9 @@ import (
 )
 
 func main()  {
-	err, exitCode, stdOut, stdErr := shellout.ExecuteCommand("./aaa", "ls")
+	err, exitCode, stdOut, stdErr := shellout.RunExternalCmd("sleep", "6", 5)
 	if err != nil {
+		fmt.Printf("Exit code: %d\n", exitCode)
 		log.Fatal(err)
 	}
 	fmt.Printf("Exit code: %d\n", exitCode)
