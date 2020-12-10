@@ -47,7 +47,7 @@ type Format struct {
 }
 
 type FfprobeResponse struct {
-	Streams	[]Streams	`json:"stream"`
+	Streams	[]Streams	`json:"streams"`
 	Tags	Tags	`json:"tags"`
 	Format	Format	`json:"format"`
 }
