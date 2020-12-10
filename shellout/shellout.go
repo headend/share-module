@@ -36,7 +36,7 @@ func RunExternalCmd(appToRun string, commandToRun []string, defaultTimeOutSecond
 		err = cmd.Run()
 		exitCode = cmd.ProcessState.ExitCode()
 		if ctx.Err() == context.DeadlineExceeded {
-			err = fmt.Errorf("Command timed out: ", err.Error())
+			err = fmt.Errorf("killed")
 		}
 	} else {
 		cmd := exec.Command(appToRun, commandToRun...)
