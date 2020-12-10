@@ -22,7 +22,7 @@ func ExecuteCommand(shellPath string, commandToRun string) (error, int, string, 
 	return err, exitCode, stdout.String(), stderr.String()
 }
 
-func RunExternalCmd(appToRun string, commandToRun string, defaultTimeOutSeconds time.Duration) (error, int, string, string) {
+func RunExternalCmd(appToRun string, commandToRun []string, defaultTimeOutSeconds time.Duration) (error, int, string, string) {
 	var stdout bytes.Buffer
 	var stderr bytes.Buffer
 	var exitCode int
@@ -30,7 +30,7 @@ func RunExternalCmd(appToRun string, commandToRun string, defaultTimeOutSeconds 
 	if defaultTimeOutSeconds > 0 {
 		ctx, cancel := context.WithTimeout(context.Background(), defaultTimeOutSeconds*time.Second)
 		defer cancel()
-		cmd := exec.CommandContext(ctx, appToRun, commandToRun)
+		cmd := exec.CommandContext(ctx, appToRun, commandToRun...)
 		cmd.Stdout = &stdout
 		cmd.Stderr = &stderr
 		err = cmd.Run()
@@ -39,7 +39,7 @@ func RunExternalCmd(appToRun string, commandToRun string, defaultTimeOutSeconds 
 			err = fmt.Errorf("Command timed out: ", err.Error())
 		}
 	} else {
-		cmd := exec.Command(appToRun, commandToRun)
+		cmd := exec.Command(appToRun, commandToRun...)
 		cmd.Stdout = &stdout
 		cmd.Stderr = &stderr
 		err = cmd.Run()
