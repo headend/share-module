@@ -9,6 +9,9 @@ type Streams struct {
 	Codec_time_base	string	`json:"codec_time_base"`
 	Codec_tag_string	string	`json:"codec_tag_string"`
 	Codec_tag	string	`json:"codec_tag"`
+	/*
+	use for video stream
+	 */
 	Width	int	`json:"width"`
 	Height	int	`json:"height"`
 	Coded_width	int	`json:"coded_width"`
@@ -30,6 +33,17 @@ type Streams struct {
 	Start_pts	int	`json:"start_pts"`
 	Start_time	string	`json:"start_time"`
 	Bits_per_raw_sample	string	`json:"bits_per_raw_sample"`
+	Tags	Tags	`json:"tags"`
+	/*
+	Only use for audio stream
+	 */
+	Sample_fmt	string	`json:"sample_fmt"`
+	Sample_rate	string	`json:"sample_rate"`
+	Channels	int	`json:"channels"`
+	Channel_layout	string	`json:"channel_layout"`
+	Bits_per_sample	int	`json:"bits_per_sample"`
+	Bit_rate	string	`json:"bit_rate"`
+
 }
 
 type Tags struct {
@@ -48,6 +62,5 @@ type Format struct {
 
 type FfprobeResponse struct {
 	Streams	[]Streams	`json:"streams"`
-	Tags	Tags	`json:"tags"`
 	Format	Format	`json:"format"`
 }
