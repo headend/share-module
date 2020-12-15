@@ -45,3 +45,10 @@ const (
 	Audio = 70003
 	BlackScreen = 70004
 )
+
+//Executer type
+const (
+	UrgentTask = 1100
+	CommandShell = 1101
+)
+
