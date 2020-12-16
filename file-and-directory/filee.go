@@ -1,6 +1,5 @@
 package file_and_directory
 
-
 import (
 	"crypto/md5"
 	"encoding/hex"
@@ -66,7 +65,13 @@ func (mf *MyFile) Exists() bool {
 }
 
 func (mf *MyFile) GetMd5FromFile(path string) (md5string string, err error)  {
-	file, err := os.Open(path)
+	filePath := ""
+	if path == "" {
+		filePath = mf.Path
+	} else {
+		filePath = path
+	}
+	file, err := os.Open(filePath)
 
 	if err != nil {
 		return "", err
@@ -89,11 +94,53 @@ func (mf *MyFile) GetMd5FromFile(path string) (md5string string, err error)  {
 }
 
 func (mf *MyFile) GetFileSizeInByte(path string) (fileSize int64, err error) {
-	fi, err := os.Stat(path)
+	filePath := ""
+	if path == "" {
+		filePath = mf.Path
+	} else {
+		filePath = path
+	}
+	fi, err := os.Stat(filePath)
 	if err != nil {
 		return 0, err
 	}
 	// get the size
 	size := fi.Size()
 	return size, nil
+}
+
+func (mf *MyFile) WriteString(StringToWrite string) (err error) {
+	var returnErr error
+	f, err := os.Create(mf.Path)
+
+	if returnErr != nil {
+		return returnErr
+	}
+	defer f.Close()
+
+	_, returnErr = f.WriteString(StringToWrite)
+
+	if returnErr != nil {
+		return returnErr
+	}
+	return returnErr
+}
+
+func (mf *MyFile) WriteByte(StringToWriteByte string) (err error) {
+	var returnErr error
+	f, err := os.Create(mf.Path)
+
+	if returnErr != nil {
+		return returnErr
+	}
+	defer f.Close()
+
+	data := []byte(StringToWriteByte)
+
+	_, returnErr = f.Write(data)
+
+	if returnErr != nil {
+		return returnErr
+	}
+	return returnErr
 }
