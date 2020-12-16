@@ -130,7 +130,7 @@ type AgentExeResponse struct {
 	/*
 		Data
 	*/
-	ReturnData	AgentExeRequest	`json:"return_data"`
+	ReturnData	AgentExeDataResponse	`json:"return_data"`
 	/*
 		Message success or fail
 	*/
