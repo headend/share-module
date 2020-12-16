@@ -43,7 +43,7 @@ type AgentCtlResponse struct {
 		1 - Success
 		0 - Fail
 	 */
-	ReturnCode	string `json:"return_code"`
+	ReturnCode	int `json:"return_code"`
 	/*
 	Data
 	 */
@@ -126,7 +126,7 @@ type AgentExeResponse struct {
 			1 - Success
 			0 - Fail
 	*/
-	ReturnCode	string `json:"return_code"`
+	ReturnCode	int `json:"return_code"`
 	/*
 		Data
 	*/
