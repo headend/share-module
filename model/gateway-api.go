@@ -78,7 +78,7 @@ type AgentExeRequest struct {
 	/*
 	Profile IP need check
 	 */
-	ListProfileId	[]string	`json:"list_profile_id"`
+	ListProfileId	[]int	`json:"list_profile_id"`
 	/*
 		Chose agent to run check (default all if null)
 	*/
