@@ -1,5 +1,7 @@
 package model
 
+import "encoding/json"
+
 type Streams struct {
 	Index	int	`json:"index"`
 	Codec_name	string	`json:"codec_name"`
@@ -63,4 +65,20 @@ type Format struct {
 type FfprobeResponse struct {
 	Streams	[]Streams	`json:"streams"`
 	Format	Format	`json:"format"`
+}
+
+func (ffp *FfprobeResponse) GetJsonString() (JsonString string, err error) {
+	b, err := json.Marshal(ffp)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
+}
+
+func (ffp *FfprobeResponse) LoadFromJsonString(JsonString string) (err error) {
+	err = json.Unmarshal([]byte(JsonString), ffp)
+	if err != nil {
+		return err
+	}
+	return
 }

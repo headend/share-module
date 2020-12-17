@@ -1,5 +1,7 @@
 package model
 
+import "encoding/json"
+
 type AgentCtlRequest struct {
 	/*
 	Agent control ip
@@ -107,4 +109,36 @@ type AgentExeResponse struct {
 		Data transmit through frontend --> backend --> agent --> backend --> frontend
 	*/
 	TunnelData	map[string]string	`json:"tunnel_data"`
+}
+
+func (actlr *AgentCtlRequest) GetJsonString() (JsonString string, err error) {
+	b, err := json.Marshal(actlr)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
+}
+
+func (exer *AgentExeRequest) GetJsonString() (JsonString string, err error) {
+	b, err := json.Marshal(exer)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
+}
+
+func (actlrsp *AgentCtlResponse) GetJsonString() (JsonString string, err error) {
+	b, err := json.Marshal(actlrsp)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
+}
+
+func (exersp *AgentExeResponse) GetJsonString() (JsonString string, err error) {
+	b, err := json.Marshal(exersp)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
 }
