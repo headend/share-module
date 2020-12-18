@@ -4,7 +4,7 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"source-centertower.mto.zing.vn/micro-services/manage-modules/configuration"
+	"github.com/headend/share-module/configuration"
 	"time"
 )
 
