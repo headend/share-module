@@ -6,7 +6,7 @@ import (
 
 
 type AgentExeSingleRequest struct {
-	AgentId	string	`json:"agent_id"`
+	AgentId	int64	`json:"agent_id"`
 	/*
 		Execute type
 		1100 = urgent task (default)
