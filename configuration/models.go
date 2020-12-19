@@ -5,6 +5,11 @@ type Agent struct {
 	Port    uint16 `yaml:"port"`
 	Gateway string `yaml:"gateway"`
 }
+type AgentMonitor struct {
+	Host    string `yaml:"host"`
+	Port    uint16 `yaml:"port"`
+	Gateway string `yaml:"gateway"`
+}
 
 type AgentMaster struct {
 	Host             string `yaml:"host"`
@@ -34,6 +39,8 @@ type Agentexecuter struct {
 }
 
 
+
+
 type Conf struct {
 	ConfigureFile string
 	DB            struct {
@@ -53,7 +60,8 @@ type Conf struct {
 	RPC struct {
 		Agent          Agent	`yaml:"agent"`
 		Agentctl       Agentctl	`yaml:"agentctl"`
-		Agentrunner    Agentexecuter	`yaml:"agentrunner"`
+		Agentrunner    Agentexecuter	`yaml:"agentexe"`
+		AgentMonitor	AgentMonitor `yaml:"agent_monitor"`
 	}	`yaml:"rpc"`
 	Warmup struct {
 		Concurrency       int `yaml:"concurrency"`
