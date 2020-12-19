@@ -1,8 +1,8 @@
 package messagequeue
 
 import (
+	"fmt"
 	"log"
-	"strconv"
 	"sync"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
@@ -15,44 +15,10 @@ type MQ struct {
 	Err      error
 }
 
-func (mq *MQ) PushMesage(config *configuration.Conf, msg string) *MQ {
+func (mq *MQ) PushMessage(config *configuration.Conf, msg string) *MQ {
 	mq.PushMsgByTopic(config, msg, config.MQ.WarmUpTopic)
 	return mq
 }
-
-//func (mq *MQ) PushMsgByTopic(config *configuration.Conf, msg string, topic string) *MQ {
-//	mq.Producer, mq.Err = kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": config.MQ.Host + ":" + strconv.Itoa(config.MQ.Port)})
-//	if mq.Err != nil {
-//		panic(mq.Err)
-//	}
-//
-//	// Delivery report handler for produced messages
-//	go func() {
-//		for e := range mq.Producer.Events() {
-//			switch ev := e.(type) {
-//			case *kafka.Message:
-//				if ev.TopicPartition.Error != nil {
-//					log.Printf("Delivery failed: %v\n", ev.TopicPartition)
-//				} else {
-//					log.Printf("Delivered message to %v\n", ev.TopicPartition)
-//				}
-//			}
-//
-//		}
-//		log.Printf("Track event closed.")
-//	}()
-//
-//	// Produce messages to topic (asynchronously)
-//	_ = mq.Producer.Produce(&kafka.Message{
-//		TopicPartition: kafka.TopicPartition{Topic: &topic, Partition: kafka.PartitionAny},
-//		Value:          []byte(msg),
-//	}, nil)
-//	// Wait for message deliveries
-//	mq.Producer.Flush(15 * 1000)
-//	log.Print("Tracking action close procedure")
-//	mq.Producer.Close()
-//	return mq
-//}
 
 func (mq *MQ) CloseProducer() *MQ {
 	mq.Producer.Close()
@@ -60,7 +26,8 @@ func (mq *MQ) CloseProducer() *MQ {
 }
 
 func (mq *MQ) PushMsgByTopic(config *configuration.Conf, msg string, topic string) *MQ {
-	mq.Producer, mq.Err = kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": config.MQ.Host + ":" + strconv.Itoa(config.MQ.Port)})
+	serverAddr := fmt.Sprintf("%s:%d", config.MQ.Host, config.MQ.Port)
+	mq.Producer, mq.Err = kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": serverAddr})
 	if mq.Err != nil {
 		log.Print(mq.Err)
 		panic(mq.Err)

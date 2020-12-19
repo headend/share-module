@@ -1,14 +1,15 @@
 package messagequeue
 
 import (
+	"fmt"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/headend/share-module/configuration"
-	"strconv"
 )
 
 func (mq *MQ) InitConsumer(config *configuration.Conf) *MQ {
+	serverAddr := fmt.Sprintf("%s:%d", config.MQ.Host, config.MQ.Port)
 	mq.Consumer, mq.Err = kafka.NewConsumer(&kafka.ConfigMap{
-		"bootstrap.servers": config.MQ.Host + ":" +  strconv.Itoa(config.MQ.Port),
+		"bootstrap.servers": serverAddr,
 		"group.id":          "myGroup",
 		"auto.offset.reset": "latest",
 	})
@@ -20,8 +21,9 @@ func (mq *MQ) InitConsumer(config *configuration.Conf) *MQ {
 }
 
 func (mq *MQ) InitConsumerByTopic(config *configuration.Conf,topic string) *MQ {
+	serverAddr := fmt.Sprintf("%s:%d", config.MQ.Host, config.MQ.Port)
 	mq.Consumer, mq.Err = kafka.NewConsumer(&kafka.ConfigMap{
-		"bootstrap.servers": config.MQ.Host + ":" +  strconv.Itoa(config.MQ.Port),
+		"bootstrap.servers": serverAddr,
 		"group.id":          "myGroup",
 		"auto.offset.reset": "latest",
 	})
