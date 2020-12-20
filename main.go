@@ -1,20 +1,35 @@
 package main
 
 import (
-	"fmt"
-	"github.com/headend/share-module/shellout"
+	messagequeue "github.com/headend/share-module/MQ"
+	"github.com/headend/share-module/configuration"
 	"log"
 )
 
 func main()  {
-	cmdtorun := []string{"udp://239.0.0.1:1234", "-v", "quiet", "-show_format", "-show_streams", "-print_format", "json"}
-	err, exitCode, stdOut, stdErr := shellout.RunExternalCmd("/opt/iptv/sbin/ffprobe", cmdtorun, 20)
-	fmt.Println("/opt/iptv/sbin/ffmpeg", cmdtorun)
-	if err != nil {
-		fmt.Printf("Exit code loi loi: %d\n", exitCode)
-		log.Fatal(err)
+	// load config
+	var conf configuration.Conf
+	conf.LoadConf()
+	log.Println(conf)
+	//testMQConsumer(conf)
+}
+
+func testMQConsumer(conf configuration.Conf) {
+	var mq messagequeue.MQ
+	mq.InitConsumerByTopic(&conf, conf.MQ.OperationTopic)
+	defer mq.CloseConsumer()
+	if mq.Err != nil {
+		log.Print(mq.Err)
 	}
-	fmt.Printf("Exit code: %d\n", exitCode)
-	fmt.Printf("Stdout: %s\n", stdOut)
-	fmt.Printf("Stderr: %s\n", stdErr)
+	log.Printf("Listen message from %s topic\n", conf.MQ.OperationTopic)
+	for {
+		msg, err := mq.Consumer.ReadMessage(-1)
+		if err != nil {
+			log.Printf("Consumer error: %v (%v)\n", err, msg)
+			log.Print("Se you again!")
+			break
+		}
+		log.Println(msg)
+		log.Println(string(msg.Value))
+	}
 }

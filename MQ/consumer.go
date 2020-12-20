@@ -16,7 +16,7 @@ func (mq *MQ) InitConsumer(config *configuration.Conf) *MQ {
 	if mq.Err != nil {
 		panic(mq.Err)
 	}
-	_ = mq.Consumer.SubscribeTopics([]string{config.MQ.WarmUpTopic, "^aRegex.*[Tt]opic"}, nil)
+	_ = mq.Consumer.SubscribeTopics([]string{config.MQ.WarmUpTopic}, nil)
 	return mq
 }
 
@@ -30,7 +30,8 @@ func (mq *MQ) InitConsumerByTopic(config *configuration.Conf,topic string) *MQ {
 	if mq.Err != nil {
 		panic(mq.Err)
 	}
-	_ = mq.Consumer.SubscribeTopics([]string{topic, "^aRegex.*[Tt]opic"}, nil)
+	//_ = mq.Consumer.SubscribeTopics([]string{topic, "^aRegex.*[Tt]opic"}, nil)
+	_ = mq.Consumer.SubscribeTopics([]string{topic}, nil)
 	return mq
 }
 
