@@ -5,6 +5,11 @@ import "encoding/json"
 type WarmupMessage struct {
 	EventTime	int64 `json:"event_time"`
 	Data	[]WarmupElement `json:"data"`
+	/*
+	event: warmup from event connect/disconect from agent (default)
+	interval: intervel system check status agent
+	*/
+	WupType	string `json:"wup_type"`
 }
 
 type WarmupElement struct {
