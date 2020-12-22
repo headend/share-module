@@ -9,6 +9,7 @@ type WarmupMessage struct {
 
 type WarmupElement struct {
 	IP	string	`json:"ip"`
+	Status	bool	`json:"status"`
 	Port	string `json:"port"`
 	Cpu	int	`json:"cpu"`
 	Ram int `json:"ram"`
