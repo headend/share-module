@@ -11,7 +11,7 @@ type RpcClient struct {
 	Err error
 }
 
-func (rpc_cli *RpcClient) InitializeClient(host string, port string) *RpcClient {
+func (rpc_cli *RpcClient) InitializeClient(host string, port uint16) *RpcClient {
 	rpcServerAddr := fmt.Sprintf("%s:%d", host, port)
 	rpc_cli.Client, rpc_cli.Err = grpc.Dial(rpcServerAddr,
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(20 * 1024 * 1024)),
