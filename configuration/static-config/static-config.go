@@ -44,6 +44,7 @@ const (
 	Video = 70002
 	Audio = 70003
 	BlackScreen = 70004
+	RunThread = 7005
 )
 
 //Executer type
