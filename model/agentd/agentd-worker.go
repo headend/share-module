@@ -2,7 +2,7 @@ package model
 
 import "encoding/json"
 
-type ProfileForAgentd struct {
+type ProfileForAgentdElement struct {
 	ProfileId	int64	`json:"profile_id"`
 	AgentId		int64	`json:"agent_id"`
 	Status		int		`json:"status"`
@@ -13,10 +13,10 @@ type ProfileForAgentd struct {
 
 type MonitorInputForAgent struct {
 	MonitorType	int	`json:"monitor_type"`
-	ProfileList []ProfileForAgentd `json:"profile_list"`
+	ProfileList []ProfileForAgentdElement `json:"profile_list"`
 }
 
-func (PFA *ProfileForAgentd) GetJsonString() (JsonString string, err error) {
+func (PFA *ProfileForAgentdElement) GetJsonString() (JsonString string, err error) {
 	b, err := json.Marshal(PFA)
 	if err != nil {
 		return "", err
@@ -24,7 +24,7 @@ func (PFA *ProfileForAgentd) GetJsonString() (JsonString string, err error) {
 	return string(b), nil
 }
 
-func (PFA *ProfileForAgentd) LoadFromJsonString(JsonString string) (err error) {
+func (PFA *ProfileForAgentdElement) LoadFromJsonString(JsonString string) (err error) {
 	err = json.Unmarshal([]byte(JsonString), PFA)
 	if err != nil {
 		return err
