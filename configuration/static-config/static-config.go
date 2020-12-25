@@ -36,6 +36,7 @@ const (
 	StopWorker = 20001
 	//Update Worker
 	UpdateWorker = 20010
+	UpdateRunThread = 20020
 	StopMonitorSignal = 30001
 	StartMonitorSignal = 30002
 	StartMonitorVideo = 300011
