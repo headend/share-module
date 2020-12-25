@@ -36,6 +36,12 @@ const (
 	StopWorker = 20001
 	//Update Worker
 	UpdateWorker = 20010
+	StopMonitorSignal = 30001
+	StartMonitorSignal = 30002
+	StartMonitorVideo = 300011
+	StopMonitorVideo = 30012
+	StartMonitorAudio = 30021
+	StopMonitorAudio = 30022
 )
 
 // Monitor type declare
