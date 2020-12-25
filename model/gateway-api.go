@@ -16,6 +16,10 @@ type AgentCtlRequest struct {
 	*/
 	ControlType	int	`json:"control_type"`
 	/*
+		Run thread (not require)
+	*/
+	RunThread	int	`json:"run_thread"`
+	/*
 	Data transmit through frontend --> backend --> agent --> backend --> frontend
 	 */
 	TunnelData	map[string]string	`json:"tunnel_data"`
