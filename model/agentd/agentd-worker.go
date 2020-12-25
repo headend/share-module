@@ -50,15 +50,18 @@ func (MIFA *MonitorInputForAgent) LoadFromJsonString(JsonString string) (err err
 }
 
 type ProfileChangeStatus struct {
-	MonitorType	int	`json:"monitor_type"`
-	ProfileId	int64	`json:"profile_id"`
-	AgentId		int64	`json:"agent_id"`
-	OldStatus		int64		`json:"old_status"`
-	NewStatus	int64	`json:"new_status"`
-	OldVideoStatus		int64		`json:"old_video_status"`
-	NewVideoStatus	int64	`json:"new_video_status"`
-	OldAudioStatus		int64		`json:"old_audio_status"`
-	NewAudioStatus	int64	`json:"new_audio_status"`
+	MonitorType		int	`json:"monitor_type"`
+	MonitorID		int64 `json:"monitor_id"`
+	ProfileId		int64	`json:"profile_id"`
+	AgentId			int64	`json:"agent_id"`
+	OldStatus		int64	`json:"old_status"`
+	NewStatus		int64	`json:"new_status"`
+	OldSignalStatus	bool	`json:"old_signal_status"`
+	NewSignalStatus	bool	`json:"new_signal_status"`
+	OldVideoStatus	bool	`json:"old_video_status"`
+	NewVideoStatus	bool	`json:"new_video_status"`
+	OldAudioStatus	bool	`json:"old_audio_status"`
+	NewAudioStatus	bool	`json:"new_audio_status"`
 	EventTime int64	`json:"event_time"`
 }
 
