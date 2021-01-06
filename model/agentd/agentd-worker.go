@@ -1,6 +1,8 @@
 package model
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 type ProfileForAgentdElement struct {
 	MonitorId	int64	`json:"monitor_id"`
@@ -79,5 +81,10 @@ func (PCS *ProfileChangeStatus) LoadFromJsonString(JsonString string) (err error
 		return err
 	}
 	return
+}
+
+type Register struct {
+	Id		int32	`json:"id"`
+	Uuid	int32	`json:"uuid"`
 }
 

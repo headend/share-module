@@ -3,15 +3,17 @@ package main
 import (
 	messagequeue "github.com/headend/share-module/MQ"
 	"github.com/headend/share-module/configuration"
+	"github.com/headend/share-module/shellout"
 	"log"
 )
 
 func main()  {
 	// load config
-	var conf configuration.Conf
-	conf.LoadConf()
-	log.Println(conf)
+	//var conf configuration.Conf
+	//conf.LoadConf()
+	//log.Println(conf)
 	//testMQConsumer(conf)
+	_,_,_,_ = shellout.RunExternalCmd("/opt/iptv/sbin/iptv-agentd", []string{"-m", "daemon", "-t", "video", "-n", "1"}, 0)
 }
 
 func testMQConsumer(conf configuration.Conf) {
@@ -33,3 +35,5 @@ func testMQConsumer(conf configuration.Conf) {
 		log.Println(string(msg.Value))
 	}
 }
+
+
