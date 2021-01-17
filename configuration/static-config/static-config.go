@@ -18,6 +18,11 @@ const (
 	BinaryPath = "/opt/iptv/sbin"
 	ConfigFilePath = "/opt/iptv/application.yml"
 	VersionFilePath = "/opt/iptv/version"
+	RunPath = "/opt/iptv/run"
+	AgentdWorkerName = "iptv-agentd-worker"
+	AgentdMasterName = "iptv-agentd"
+	AgentdWorkerPath = "/opt/iptv/sbin/iptv-agentd-worker"
+	AgentdMasterPAth = "/opt/iptv/sbiniptv-agentd"
 )
 
 // signal declare

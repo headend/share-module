@@ -17,3 +17,10 @@ func (wu *WorkerUpdateSignal) GetJsonString() (JsonString string, err error) {
 	return string(b), nil
 }
 
+func (wu *WorkerUpdateSignal) LoadFromJsonString(JsonString string) (err error) {
+	err = json.Unmarshal([]byte(JsonString), wu)
+	if err != nil {
+		return err
+	}
+	return
+}

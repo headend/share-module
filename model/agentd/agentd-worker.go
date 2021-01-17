@@ -8,7 +8,7 @@ type ProfileForAgentdElement struct {
 	MonitorId	int64	`json:"monitor_id"`
 	ProfileId	int64	`json:"profile_id"`
 	AgentId		int64	`json:"agent_id"`
-	Status		int64		`json:"status"`
+	Status		int64	`json:"status"`
 	VideoStatus	bool	`json:"video_status"`
 	AudioStatus bool	`json:"audio_status"`
 	MulticastIP string	`json:"multicast_ip"`

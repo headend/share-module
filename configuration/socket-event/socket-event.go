@@ -34,6 +34,12 @@ const (
 	KetQuaThucThiLenh = "execute-response"
 	// Dieu khien stop/ start
 	DieuKhien = "control"
+	UpdateWorker = "worker-update"
+	MonitorResponse = "monitor-response"
+	ProfileRequest = "profile-monitor-request"
+	ProfileResponse = "profile-monitor-response"
+	PingPing = "ping"
+	PongPong = "pong"
 )
 
 
