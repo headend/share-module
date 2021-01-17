@@ -23,6 +23,11 @@ const (
 	AgentdMasterName = "iptv-agentd"
 	AgentdWorkerPath = "/opt/iptv/sbin/iptv-agentd-worker"
 	AgentdMasterPAth = "/opt/iptv/sbiniptv-agentd"
+	WorkerSignalPid = "/opt/iptv/run/signal.pid"
+	WorkerVideoPid = "/opt/iptv/run/video.pid"
+	WorkerAudioPid = "/opt/iptv/run/audio.pid"
+	WorkerVersionFile = "/opt/iptv/run/worker-version"
+	AgentdPid = "/opt/iptv/run/agentd.pid"
 )
 
 // signal declare
