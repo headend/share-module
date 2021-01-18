@@ -22,7 +22,7 @@ const (
 	AgentdWorkerName = "iptv-agentd-worker"
 	AgentdMasterName = "iptv-agentd"
 	AgentdWorkerPath = "/opt/iptv/sbin/iptv-agentd-worker"
-	AgentdMasterPAth = "/opt/iptv/sbiniptv-agentd"
+	AgentdMasterPAth = "/opt/iptv/sbin/iptv-agentd"
 	WorkerSignalPid = "/opt/iptv/run/signal.pid"
 	WorkerVideoPid = "/opt/iptv/run/video.pid"
 	WorkerAudioPid = "/opt/iptv/run/audio.pid"
