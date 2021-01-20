@@ -19,6 +19,7 @@ type WarmupElement struct {
 	Cpu	int	`json:"cpu"`
 	Ram int `json:"ram"`
 	Disk int `json:"disk"`
+	Version string `json:"version"`
 }
 
 func (WM *WarmupMessage) GetJsonString() (JsonString string, err error) {
