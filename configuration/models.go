@@ -99,6 +99,7 @@ type Conf struct {
 		NraTopic                 string `yaml:"nra_topic"`
 		OperationTopic           string `yaml:"operation_topic"`
 		CommandTopic             string `yaml:"command_topic"`
+		MonitorLogsTopic			string `yaml:"monitor_logs_topic"`
 		Username                 string `yaml:"Username"`
 		Password                 string `yaml:"Password"`
 	}	`yaml:"mq"`
