@@ -56,6 +56,14 @@ type Conf struct {
 		Password string `yaml:"password"`
 		DBName   string `yaml:"dbname"`
 	}	`yaml:"db"`
+	Telegram	struct{
+		APIBaseURL		string	`yaml:"api_base_url"`
+		APISendMessage	string	`yaml:"api_send_message"`
+		Bot				struct{
+			TokenEnv	string	`yaml:"token_env"`
+			ChatID		string	`yaml:"chat_id"`
+		}	`yaml:"bot"`
+	}	`yaml:"telegram"`
 	Server struct {
 		Port    uint16 `yaml:"port"`
 		Host    string `yaml:"host"`
